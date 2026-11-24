@@ -28,7 +28,7 @@ const parseExerciseArguments = (args: string[]): ExerciseArguments => {
   };
 };
 
-const calculateExercises = (
+export const calculateExercises = (
   target: number,
   hours: number[],
 ): ExerciseResult => {
@@ -60,13 +60,15 @@ const calculateExercises = (
   };
 };
 
-try {
-  const { target, hours } = parseExerciseArguments(process.argv);
-  console.log(calculateExercises(target, hours));
-} catch (error: unknown) {
-  let errorMessage = "Something went wrong: ";
-  if (error instanceof Error) {
-    errorMessage += error.message;
+if (process.argv[1] === import.meta.filename) {
+  try {
+    const { target, hours } = parseExerciseArguments(process.argv);
+    console.log(calculateExercises(target, hours));
+  } catch (error: unknown) {
+    let errorMessage = "Something went wrong: ";
+    if (error instanceof Error) {
+      errorMessage += error.message;
+    }
+    console.log(errorMessage);
   }
-  console.log(errorMessage);
 }
