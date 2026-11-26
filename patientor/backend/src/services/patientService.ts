@@ -1,7 +1,7 @@
 import patientData from "../../data/patients.ts";
 import type { Patient, NonSensitivePatient, NewPatient } from "../types.ts";
 
-const patients: Patient[] = patientData;
+const patients = patientData;
 
 const getPatients = (): Patient[] => {
   return patients;
